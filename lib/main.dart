@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
- 
 
 // /// Top-level background message handler (must be a top-level function)
 // @pragma('vm:entry-point')
@@ -178,7 +177,7 @@ class MyApp extends StatelessWidget {
         // ),
         themeMode: ThemeMode.system,
         getPages: AppPages.routes,
-        initialRoute: AppRoutes.splash,
+        initialRoute: AppRoutes.home,
       ),
     );
   }
