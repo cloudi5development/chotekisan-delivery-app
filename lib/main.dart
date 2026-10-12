@@ -99,9 +99,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.light().copyWith(
           extensions: <ThemeExtension<MyColors>>[
             MyColors(
-              txt: const Color(0XFF202020),
+              txt: const Color(0XFF111827),
               primary: const Color(0xFFF27224),
-              primaryText: const Color(0xFF878787),
+              primaryText: const Color(0xFF6B7280),
               primaryLableText: const Color(0XFF2A2A2A),
               primaryLight: const Color(0xFFA61C1C),
               secondary: const Color(0xFFAD1D3D),
@@ -177,7 +177,7 @@ class MyApp extends StatelessWidget {
         // ),
         themeMode: ThemeMode.system,
         getPages: AppPages.routes,
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.splash,
       ),
     );
   }

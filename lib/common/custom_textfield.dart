@@ -247,3 +247,196 @@ class CustomPhoneTextfield extends StatelessWidget {
     );
   }
 }
+
+class CustomLabelTextfield extends StatelessWidget {
+  final String label;
+  final String hintText;
+  final bool isRequired;
+  final TextEditingController textEditingController;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextCapitalization textCapitalization;
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final Widget? suffixIcon;
+
+  const CustomLabelTextfield({
+    super.key,
+    required this.label,
+    required this.hintText,
+    required this.textEditingController,
+    this.isRequired = false,
+    this.keyboardType,
+    this.inputFormatters,
+    this.textCapitalization = TextCapitalization.none,
+    this.readOnly = false,
+    this.onTap,
+    this.suffixIcon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    MyColors? myColors = Theme.of(context).extension<MyColors>();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            OnestText(
+              text: label,
+              color: Color(0xff374151),
+              fontSize: ResponsiveFontSizes.fontSize16(context),
+              fontWeight: FontWeight.w400,
+            ),
+            if (isRequired)
+              OnestText(
+                text: " *",
+                color: myColors?.error,
+                fontSize: ResponsiveFontSizes.fontSize16(context),
+                fontWeight: FontWeight.w700,
+              ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: myColors?.borderGray ?? Colors.black12),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: textEditingController,
+                  keyboardType: keyboardType,
+                  inputFormatters: inputFormatters,
+                  textCapitalization: textCapitalization,
+                  readOnly: readOnly,
+                  onTap: onTap,
+                  cursorColor: myColors?.green,
+                  style: GoogleFonts.onest(
+                    color: myColors?.txt,
+                    fontSize: ResponsiveFontSizes.fontSize17(context),
+                    fontWeight: FontWeight.w400,
+                  ),
+                  decoration: InputDecoration(
+                    counterText: "",
+                    filled: false,
+                    hintText: hintText,
+                    hintStyle: GoogleFonts.onest(
+                      color: Color(0xff9CA3AF),
+                      fontSize: ResponsiveFontSizes.fontSize17(context),
+                      fontWeight: FontWeight.w400,
+                    ),
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  ),
+                ),
+              ),
+              if (suffixIcon != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 14),
+                  child: suffixIcon,
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CustomLabelDropdown extends StatelessWidget {
+  final String label;
+  final String hintText;
+  final bool isRequired;
+  final String? value;
+  final List<String> items;
+  final ValueChanged<String?>? onChanged;
+
+  const CustomLabelDropdown({
+    super.key,
+    required this.label,
+    required this.items,
+    required this.value,
+    this.hintText = "Select",
+    this.isRequired = false,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    MyColors? myColors = Theme.of(context).extension<MyColors>();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            OnestText(
+              text: label,
+              color: Color(0xff374151),
+              fontSize: ResponsiveFontSizes.fontSize16(context),
+              fontWeight: FontWeight.w400,
+            ),
+            if (isRequired)
+              OnestText(
+                text: " *",
+                color: myColors?.error,
+                fontSize: ResponsiveFontSizes.fontSize16(context),
+                fontWeight: FontWeight.w700,
+              ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Container(
+          height: 48,
+          padding: const EdgeInsets.only(left: 10, right: 12),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: myColors?.borderGray ?? Colors.black12),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: value,
+              isExpanded: true,
+              dropdownColor: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              icon: Icon(
+                Icons.keyboard_arrow_down,
+                size: 24,
+                color: Color(0xff374151),
+              ),
+              hint: Text(
+                hintText,
+                style: GoogleFonts.onest(
+                  color: Color(0xff9CA3AF),
+                  fontSize: ResponsiveFontSizes.fontSize17(context),
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              style: GoogleFonts.onest(
+                color: myColors?.txt,
+                fontSize: ResponsiveFontSizes.fontSize17(context),
+                fontWeight: FontWeight.w400,
+              ),
+              items: items
+                  .map(
+                    (item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(item),
+                    ),
+                  )
+                  .toList(),
+              onChanged: onChanged,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
