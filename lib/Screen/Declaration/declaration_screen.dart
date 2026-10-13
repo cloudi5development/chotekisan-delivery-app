@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DeclarationScreen extends GetView<DeclarationController> {
-  const new({super.key});
+  const DeclarationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

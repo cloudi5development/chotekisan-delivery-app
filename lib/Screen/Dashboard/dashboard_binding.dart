@@ -2,6 +2,7 @@ import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_controller.da
 import 'package:chotekisan_delivery_app/Screen/Deliveries/deliveries_controller.dart';
 import 'package:chotekisan_delivery_app/Screen/Earnings/earnings_controller.dart';
 import 'package:chotekisan_delivery_app/Screen/Home/home_controller.dart';
+import 'package:chotekisan_delivery_app/Screen/Profile/profile_controller.dart';
 import 'package:get/get.dart';
 
 class DashboardBinding extends Bindings {
@@ -16,5 +17,7 @@ class DashboardBinding extends Bindings {
     Get.put<DeliveriesController>(DeliveriesController());
     // Earnings is the third tab.
     Get.put<EarningsController>(EarningsController());
+    // Profile is the last tab of the same IndexedStack.
+    Get.put<ProfileController>(ProfileController());
   }
 }

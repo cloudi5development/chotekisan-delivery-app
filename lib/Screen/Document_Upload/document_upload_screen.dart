@@ -12,7 +12,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class DocumentUploadScreen extends GetView<DocumentUploadController> {
-  const new({super.key});
+  const DocumentUploadScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_controller.da
 import 'package:chotekisan_delivery_app/Screen/Deliveries/deliveries_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Earnings/earnings_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Home/home_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Profile/profile_screen.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
 import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
@@ -34,7 +35,7 @@ class DashboardScreen extends GetView<DashboardController> {
                   HomeScreen(),
                   DeliveriesScreen(),
                   EarningsScreen(),
-                  _ComingSoonTab(title: "Profile"),
+                  ProfileScreen(),
                 ],
               ),
             ),
