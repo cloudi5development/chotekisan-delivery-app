@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class PaymentInformationScreen extends GetView<PaymentInformationController> {
-  const new({super.key});
+  const PaymentInformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

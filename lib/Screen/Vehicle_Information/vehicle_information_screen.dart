@@ -12,7 +12,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class VehicleInformationScreen extends GetView<VehicleInformationController> {
-  const new({super.key});
+  const VehicleInformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

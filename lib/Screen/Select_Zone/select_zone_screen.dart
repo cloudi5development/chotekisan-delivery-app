@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectZoneScreen extends GetView<SelectZoneController> {
-  const new({super.key});
+  const SelectZoneScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

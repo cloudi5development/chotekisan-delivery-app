@@ -1,0 +1,190 @@
+import 'package:chotekisan_delivery_app/Screen/Documents_Verification/documents_verification_controller.dart';
+import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/customText.dart';
+import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
+import 'package:chotekisan_delivery_app/common/custom_button.dart';
+import 'package:chotekisan_delivery_app/common/responsive_font.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class DocumentsVerificationScreen
+    extends GetView<DocumentsVerificationController> {
+  const DocumentsVerificationScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    MyColors? myColors = Theme.of(context).extension<MyColors>();
+    return Scaffold(
+      backgroundColor: const Color(0xffF8F9FB),
+      body: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            const CustomAppHeader(
+              title: "Documents & Verification",
+              showBack: true,
+            ),
+
+            Expanded(
+              child: Obx(
+                () => SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (final entry in controller.sections.entries) ...[
+                        OnestText(
+                          text: entry.key,
+                          color: myColors?.txt,
+                          fontSize: ResponsiveFontSizes.fontSize18(context),
+                          fontWeight: FontWeight.w700,
+                        ),
+
+                        const SizedBox(height: 10),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: Column(
+                            children: [
+                              for (int i = 0; i < entry.value.length; i++) ...[
+                                if (i > 0)
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 14,
+                                    ),
+                                    child: Divider(
+                                      height: 1,
+                                      thickness: 1,
+                                      color: Color(0xffF0F1F3),
+                                    ),
+                                  ),
+                                _DocumentTile(document: entry.value[i]),
+                              ],
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(height: 20),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+          child: Obx(
+            () => CustomButton(
+              text: "Update Document",
+              height: 48,
+              width: width,
+              bgcolor: myColors?.green,
+              textcolor: Colors.white,
+              borderRadius: 24,
+              icon: controller.isEditing.value
+                  ? null
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 6),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        size: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+              onPressed: () => controller.onUpdatePressed(context),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DocumentTile extends GetView<DocumentsVerificationController> {
+  final VerificationDocument document;
+
+  const _DocumentTile({required this.document});
+
+  @override
+  Widget build(BuildContext context) {
+    MyColors? myColors = Theme.of(context).extension<MyColors>();
+    return Padding(
+      padding: const EdgeInsets.all(14),
+      child: Row(
+        children: [
+          // Document thumbnail placeholder.
+          Container(
+            height: 46,
+            width: 46,
+            decoration: const BoxDecoration(
+              color: Color(0xffEDEFF2),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.image_rounded,
+              size: 22,
+              color: Color(0xffB6BCC6),
+            ),
+          ),
+
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                OnestText(
+                  text: document.title,
+                  color: myColors?.txt,
+                  fontSize: ResponsiveFontSizes.fontSize17(context),
+                  fontWeight: FontWeight.w600,
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 2),
+                OnestText(
+                  text: document.updatedOn,
+                  color: myColors?.primaryText,
+                  fontSize: ResponsiveFontSizes.fontSize14(context),
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
+          ),
+
+          Obx(
+            () => !controller.isEditing.value
+                ? const SizedBox()
+                : GestureDetector(
+                    onTap: () => controller.onPickDocument(document),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      margin: const EdgeInsets.only(left: 10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffEEF8F0),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: const Color(0xffD2F0D7)),
+                      ),
+                      child: Icon(
+                        document.isPhoto
+                            ? Icons.photo_camera_outlined
+                            : Icons.file_upload_outlined,
+                        size: 20,
+                        color: myColors?.green,
+                      ),
+                    ),
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}

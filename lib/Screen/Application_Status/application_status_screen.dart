@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicationStatusScreen extends GetView<ApplicationStatusController> {
-  const new({super.key});
+  const ApplicationStatusScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

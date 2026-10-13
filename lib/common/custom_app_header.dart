@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 class CustomAppHeader extends StatelessWidget {
   final String title;
   final bool showBack;
+  final bool showSupport;
   final VoidCallback? onBack;
   final VoidCallback? onSupport;
 
@@ -16,6 +17,7 @@ class CustomAppHeader extends StatelessWidget {
     super.key,
     required this.title,
     this.showBack = false,
+    this.showSupport = true,
     this.onBack,
     this.onSupport,
   });
@@ -59,10 +61,11 @@ class CustomAppHeader extends StatelessWidget {
                 ),
               ),
 
-            Positioned(
-              right: 0,
-              child: GestureDetector(
-                onTap: onSupport,
+            if (showSupport)
+              Positioned(
+                right: 0,
+                child: GestureDetector(
+                  onTap: onSupport,
                 child: Container(
                   height: 32,
                   width: 32,

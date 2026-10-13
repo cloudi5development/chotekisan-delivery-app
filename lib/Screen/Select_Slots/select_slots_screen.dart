@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class SelectSlotsScreen extends GetView<SelectSlotsController> {
-  const new({super.key});
+  const SelectSlotsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

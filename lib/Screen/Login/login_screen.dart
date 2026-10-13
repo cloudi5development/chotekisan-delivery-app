@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends GetView<LoginController> {
-  const new({super.key});
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

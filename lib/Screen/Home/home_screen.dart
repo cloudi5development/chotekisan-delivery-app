@@ -13,7 +13,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends GetView<HomeController> {
-  const new({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
