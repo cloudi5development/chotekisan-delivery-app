@@ -1,11 +1,14 @@
 import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_controller.dart';
 import 'package:chotekisan_delivery_app/Screen/Deliveries/deliveries_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Earnings/earnings_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Home/home_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Profile/profile_screen.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class DashboardScreen extends GetView<DashboardController> {
@@ -31,7 +34,7 @@ class DashboardScreen extends GetView<DashboardController> {
                 children: const [
                   HomeScreen(),
                   DeliveriesScreen(),
-                  _ComingSoonTab(title: "Earnings"),
+                  EarningsScreen(),
                   ProfileScreen(),
                 ],
               ),
@@ -83,29 +86,29 @@ class _DashboardNavBar extends GetView<DashboardController> {
                         _NavItem(
                           index: 0,
                           label: "Home",
-                          icon: Icons.home_outlined,
-                          activeIcon: Icons.home_rounded,
+                          icon: AssetSvgPath.homeIcon,
+                          activeIcon: AssetSvgPath.homeIconActive,
                           isActive: controller.tabIndex.value == 0,
                         ),
                         _NavItem(
                           index: 1,
                           label: "Deliveries",
-                          icon: Icons.shopping_bag_outlined,
-                          activeIcon: Icons.shopping_bag,
+                          icon: AssetSvgPath.deliveryIcon,
+                          activeIcon: AssetSvgPath.deliveryIconActive,
                           isActive: controller.tabIndex.value == 1,
                         ),
                         _NavItem(
                           index: 2,
                           label: "Earnings",
-                          icon: Icons.account_balance_wallet_outlined,
-                          activeIcon: Icons.account_balance_wallet,
+                          icon: AssetSvgPath.earningsIcon,
+                          activeIcon: AssetSvgPath.earningsIconActive,
                           isActive: controller.tabIndex.value == 2,
                         ),
                         _NavItem(
                           index: 3,
                           label: "Profile",
-                          icon: Icons.person_outline_rounded,
-                          activeIcon: Icons.person_rounded,
+                          icon: AssetSvgPath.profileIcon,
+                          activeIcon: AssetSvgPath.profileIconActive,
                           isActive: controller.tabIndex.value == 3,
                         ),
                       ],
@@ -124,8 +127,8 @@ class _DashboardNavBar extends GetView<DashboardController> {
 class _NavItem extends GetView<DashboardController> {
   final int index;
   final String label;
-  final IconData icon;
-  final IconData activeIcon;
+  final String icon;
+  final String activeIcon;
   final bool isActive;
 
   const _NavItem({
@@ -147,10 +150,12 @@ class _NavItem extends GetView<DashboardController> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            // The icons already ship in the right colours, so they are drawn
+            // untinted.
+            SvgPicture.asset(
               isActive ? activeIcon : icon,
-              size: 26,
-              color: isActive ? myColors?.greenColor : myColors?.primaryText,
+              height: 26,
+              width: 26,
             ),
 
             const SizedBox(height: 2),

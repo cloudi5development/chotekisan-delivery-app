@@ -19,10 +19,23 @@ class AssetImagePath {
   static const String selectZone = "assets/images/select_zone.png";
   static const String noSlots = "assets/images/no_slots.png";
   static const String zoneMap = "assets/images/zone_map.png";
+  static const String orderMap = "assets/images/order_map.png";
+  static const String productImage = "assets/images/product_image.png";
+  static const String noTransaction =
+      "assets/images/no_transaction_card.webp";
 }
 
 class AssetSvgPath {
   static const String tickIcon = "assets/svg/tick.svg";
+  // Bottom navigation: plain icon, and the coloured one for the active tab
+  static const String homeIcon = "assets/svg/home_icon.svg";
+  static const String homeIconActive = "assets/svg/home_clr_icon.svg";
+  static const String deliveryIcon = "assets/svg/delivery_icon.svg";
+  static const String deliveryIconActive = "assets/svg/delivery_clr_icon.svg";
+  static const String earningsIcon = "assets/svg/earnings_icon.svg";
+  static const String earningsIconActive = "assets/svg/earnings_clr_icon.svg";
+  static const String profileIcon = "assets/svg/profile_icon.svg";
+  static const String profileIconActive = "assets/svg/profile_clr_icon.svg";
   static const String bikeIcon = "assets/svg/bike_icon.svg";
   static const String scooter = "assets/svg/scooter.svg";
   static const String evBike = "assets/svg/ev_bike.svg";

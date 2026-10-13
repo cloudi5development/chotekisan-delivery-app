@@ -66,22 +66,22 @@ class CustomAppHeader extends StatelessWidget {
                 right: 0,
                 child: GestureDetector(
                   onTap: onSupport,
-                child: Container(
-                  height: 32,
-                  width: 32,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: SvgPicture.asset(
-                    AssetSvgPath.supportIcon,
-                    height: 18,
-                    width: 18,
+                  child: Container(
+                    height: 32,
+                    width: 32,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgPicture.asset(
+                      AssetSvgPath.supportIcon,
+                      height: 18,
+                      width: 18,
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

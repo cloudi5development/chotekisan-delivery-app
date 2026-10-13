@@ -3,6 +3,7 @@ import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_controller.da
 import 'package:chotekisan_delivery_app/Screen/Deliveries/deliveries_controller.dart';
 import 'package:chotekisan_delivery_app/common/action_dialog.dart';
 import 'package:chotekisan_delivery_app/common/assets_path.dart';
+import 'package:chotekisan_delivery_app/common/phone_launcher.dart';
 import 'package:chotekisan_delivery_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -143,14 +144,28 @@ class HomeController extends GetxController {
           orderId: "#ORD0$i",
           distance: "1.8 km",
           amount: "79",
-          paymentType: "Online",
+          // Alternates so both the Online and COD close flows can be seen
+          paymentType: i.isOdd ? "Online" : "COD",
           pickupName: "Main-Hub Gandhipuram",
           pickupAddress:
               "Aavin Illam, 3A, Pasumpon Muthuramalingam Salai, Coimbatore, 641035.",
           customerName: "Customer Name",
-          customerMobile: "",
+          customerMobile: "1234567890",
           dropAddress:
               "Plot No. 12, Lakshmi Garden, Saravanampatti, Coimbatore, 641035.",
+          // Sample destination: NA Hospital, Coimbatore
+          dropLatitude: 11.0458953,
+          dropLongitude: 76.9899584,
+          orderType: i.isOdd ? null : "Doorstep",
+          orderTotal: "180",
+          items: [
+            for (int j = 0; j < 3; j++)
+              {
+                "name": "Fresh Lemon (Elumichai)",
+                "quantity": "5 pcs",
+                "image": AssetImagePath.productImage,
+              },
+          ],
         ),
     ]);
   }
@@ -170,12 +185,23 @@ class HomeController extends GetxController {
     currentDeliveries.refresh();
   }
 
+  // Opens the phone's dialer with the customer's number
   void callCustomer(OrderModel order) {
-    // TODO: open the dialer with order.customerMobile.
+    callPhoneNumber(order.customerMobile);
   }
 
   void startDelivery(OrderModel order) {
-    // TODO: open the delivery tracking screen.
+    // TODO: call start delivery api here.
+    order.startedOn ??= OrderModel.formatDateTime(DateTime.now());
+    Get.toNamed(AppRoutes.orderDetails, arguments: order);
+  }
+
+  // Called once the customer OTP is verified on the Order Details screen
+  void closeDelivery(OrderModel order) {
+    order.deliveredOn = OrderModel.formatDateTime(DateTime.now());
+    currentDeliveries.remove(order);
+    currentDeliveryIndex.value = 0;
+    Get.find<DeliveriesController>().deliveredOrders.insert(0, order);
   }
 
   void onDeliverySwiped(double velocity) {

@@ -1,4 +1,4 @@
-package com.example.chotekisan_delivery_app
+package com.chotekisan.delivery
 
 import io.flutter.embedding.android.FlutterActivity
 

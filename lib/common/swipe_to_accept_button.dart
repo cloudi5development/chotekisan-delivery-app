@@ -1,3 +1,4 @@
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
@@ -93,11 +94,19 @@ class _SwipeToAcceptButtonState extends State<SwipeToAcceptButton> {
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.view_in_ar_rounded,
-                      size: 20,
-                      color: Color(0xff0FA53A),
+                    child: Center(
+                      child: Image.asset(
+                        AssetImagePath.orderIcon,
+                        height: 24,
+                        width: 24,
+                        color: Color(0xff0FA53A),
+                      ),
                     ),
+                    //  const Icon(
+                    //   Icons.view_in_ar_rounded,
+                    //   size: 20,
+                    //   color: Color(0xff0FA53A),
+                    // ),
                   ),
                 ),
               ),
