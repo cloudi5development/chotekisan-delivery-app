@@ -1,6 +1,9 @@
 abstract class AppRoutes {
   static const String dashboard = '/dashboard';
   static const String deliveryDetails = '/deliveryDetails';
+  static const String orderDetails = '/orderDetails';
+  static const String deliveryClosed = '/deliveryClosed';
+  static const String dayEarnings = '/dayEarnings';
   static const String selectSlots = '/selectSlots';
   static const String selectZone = '/selectZone';
   static const String login = '/login';

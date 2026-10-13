@@ -42,6 +42,40 @@ class DashedLinePainter extends CustomPainter {
       oldDelegate.color != color;
 }
 
+/// Paints a horizontal dashed line across the middle of its box.
+class DashedDividerPainter extends CustomPainter {
+  final Color color;
+  final double dashWidth;
+  final double dashGap;
+
+  const DashedDividerPainter({
+    required this.color,
+    this.dashWidth = 6,
+    this.dashGap = 4,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1;
+    double x = 0;
+    while (x < size.width) {
+      final end = (x + dashWidth).clamp(0, size.width).toDouble();
+      canvas.drawLine(
+        Offset(x, size.height / 2),
+        Offset(end, size.height / 2),
+        paint,
+      );
+      x += dashWidth + dashGap;
+    }
+  }
+
+  @override
+  bool shouldRepaint(DashedDividerPainter oldDelegate) =>
+      oldDelegate.color != color;
+}
+
 class InfoNoteBox extends StatelessWidget {
   final String text;
 

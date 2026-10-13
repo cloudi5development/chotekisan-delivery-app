@@ -11,12 +11,23 @@ class OrderModel {
   final String customerMobile;
   final String dropAddress;
 
+  // Customer location for the delivery map and Navigate button
+  final double? dropLatitude;
+  final double? dropLongitude;
+
   // Delivery details
   final String orderAmount;
   final String collectAmount;
   final String? orderType;
   final String? customerNote;
   final String? capturedPhoto;
+
+  // Order items: each has "name", "quantity" and "image"
+  final List<Map<String, String>> items;
+  final String orderTotal;
+
+  // How the COD amount was collected: "In-hand" or "Scan & Collect"
+  String? collectedVia;
 
   // Timeline
   String? acceptedOn;
@@ -39,11 +50,15 @@ class OrderModel {
     required this.customerName,
     required this.customerMobile,
     required this.dropAddress,
+    this.dropLatitude,
+    this.dropLongitude,
     this.orderAmount = "000",
     this.collectAmount = "149",
     this.orderType,
     this.customerNote,
     this.capturedPhoto,
+    this.items = const [],
+    this.orderTotal = "000",
     this.acceptedOn,
     this.pickedUpOn,
     this.startedOn,

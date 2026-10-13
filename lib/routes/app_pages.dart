@@ -4,6 +4,8 @@ import 'package:chotekisan_delivery_app/Screen/Basic_Information/basic_informati
 import 'package:chotekisan_delivery_app/Screen/Basic_Information/basic_information_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Dashboard/dashboard_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Day_Earnings/day_earnings_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Day_Earnings/day_earnings_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Declaration/declaration_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Declaration/declaration_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Delivery_Details/delivery_details_binding.dart';
@@ -18,6 +20,10 @@ import 'package:chotekisan_delivery_app/Screen/Otp/otp_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Otp/otp_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Payment_Information/payment_information_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Payment_Information/payment_information_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Delivery_Closed/delivery_closed_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Delivery_Closed/delivery_closed_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Order_Details/order_details_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Order_Details/order_details_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Select_Slots/select_slots_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Select_Slots/select_slots_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Select_Zone/select_zone_binding.dart';
@@ -36,6 +42,24 @@ class AppPages {
       name: AppRoutes.dashboard,
       page: () => const DashboardScreen(),
       binding: DashboardBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.orderDetails,
+      page: () => const OrderDetailsScreen(),
+      binding: OrderDetailsBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.dayEarnings,
+      page: () => const DayEarningsScreen(),
+      binding: DayEarningsBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.deliveryClosed,
+      page: () => const DeliveryClosedScreen(),
+      binding: DeliveryClosedBinding(),
       transition: Transition.fadeIn,
     ),
     GetPage<dynamic>(
