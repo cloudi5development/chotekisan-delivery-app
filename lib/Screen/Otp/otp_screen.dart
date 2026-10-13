@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class OtpScreen extends GetView<OtpController> {
-  const new({super.key});
+  const OtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

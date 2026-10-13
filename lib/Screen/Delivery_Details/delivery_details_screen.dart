@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class DeliveryDetailsScreen extends GetView<DeliveryDetailsController> {
-  const new({super.key});
+  const DeliveryDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -177,7 +177,7 @@ class MyApp extends StatelessWidget {
         // ),
         themeMode: ThemeMode.system,
         getPages: AppPages.routes,
-        initialRoute: AppRoutes.splash,
+        initialRoute: AppRoutes.dashboard,
       ),
     );
   }

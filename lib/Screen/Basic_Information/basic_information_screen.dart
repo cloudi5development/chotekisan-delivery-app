@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class BasicInformationScreen extends GetView<BasicInformationController> {
-  const new({super.key});
+  const BasicInformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

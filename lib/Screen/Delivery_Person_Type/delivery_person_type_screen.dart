@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DeliveryPersonTypeScreen extends GetView<DeliveryPersonTypeController> {
-  const new({super.key});
+  const DeliveryPersonTypeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
