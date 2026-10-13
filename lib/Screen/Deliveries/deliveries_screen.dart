@@ -1,6 +1,7 @@
 import 'package:chotekisan_delivery_app/Model/order_model.dart';
 import 'package:chotekisan_delivery_app/Screen/Deliveries/deliveries_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/custom_button.dart';
@@ -186,7 +187,7 @@ class DeliveriesScreen extends GetView<DeliveriesController> {
             SizedBox(height: 11),
 
             OrderAddressBlock(
-              icon: Icons.send_rounded,
+              svgIcon: AssetSvgPath.sendArrow,
               label: "PICKUP",
               name: order.pickupName,
               address: order.pickupAddress,
@@ -211,7 +212,7 @@ class DeliveriesScreen extends GetView<DeliveriesController> {
             SizedBox(height: 11),
 
             OrderAddressBlock(
-              icon: Icons.send_rounded,
+              svgIcon: AssetSvgPath.sendArrow,
               label: "PICKUP",
               name: order.pickupName,
               address: order.pickupAddress,
@@ -241,7 +242,7 @@ class DeliveriesScreen extends GetView<DeliveriesController> {
             SizedBox(height: 11),
 
             OrderAddressBlock(
-              icon: Icons.send_rounded,
+              svgIcon: AssetSvgPath.sendArrow,
               label: "PICKUP",
               name: order.pickupName,
               address: order.pickupAddress,
@@ -329,7 +330,7 @@ class DeliveriesScreen extends GetView<DeliveriesController> {
             SizedBox(height: 11),
 
             OrderAddressBlock(
-              icon: Icons.send_rounded,
+              svgIcon: AssetSvgPath.sendArrow,
               label: "PICKUP",
               name: order.pickupName,
               address: order.pickupAddress,

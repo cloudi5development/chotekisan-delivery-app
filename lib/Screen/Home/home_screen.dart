@@ -765,7 +765,7 @@ class HomeScreen extends GetView<HomeController> {
                     if (!order.isPickedUp.value) ...[
                       addressBlock(
                         context,
-                        icon: Icons.send_rounded,
+                        svgIcon: AssetSvgPath.sendArrow,
                         label: "PICKUP",
                         name: order.pickupName,
                         address: order.pickupAddress,
@@ -785,7 +785,7 @@ class HomeScreen extends GetView<HomeController> {
                     ] else ...[
                       addressBlock(
                         context,
-                        icon: Icons.send_rounded,
+                        svgIcon: AssetSvgPath.sendArrow,
                         label: "PICKUP",
                         name: order.pickupName,
                         address: order.pickupAddress,
@@ -970,7 +970,7 @@ class HomeScreen extends GetView<HomeController> {
 
                   addressBlock(
                     context,
-                    icon: Icons.send_rounded,
+                    svgIcon: AssetSvgPath.sendArrow,
                     label: "PICKUP",
                     name: order.pickupName,
                     address: order.pickupAddress,
@@ -1027,7 +1027,8 @@ class HomeScreen extends GetView<HomeController> {
 
   Widget addressBlock(
     BuildContext context, {
-    required IconData icon,
+    IconData? icon,
+    String? svgIcon,
     required String label,
     required String name,
     required String address,
@@ -1035,6 +1036,7 @@ class HomeScreen extends GetView<HomeController> {
   }) {
     return OrderAddressBlock(
       icon: icon,
+      svgIcon: svgIcon,
       label: label,
       name: name,
       address: address,
