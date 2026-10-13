@@ -21,8 +21,7 @@ class AssetImagePath {
   static const String zoneMap = "assets/images/zone_map.png";
   static const String orderMap = "assets/images/order_map.png";
   static const String productImage = "assets/images/product_image.png";
-  static const String noTransaction =
-      "assets/images/no_transaction_card.webp";
+  static const String noTransaction = "assets/images/no_transaction_card.webp";
 }
 
 class AssetSvgPath {
@@ -42,4 +41,5 @@ class AssetSvgPath {
   static const String cycle = "assets/svg/cycle.svg";
   static const String noImage = "assets/svg/no_image.svg";
   static const String supportIcon = "assets/svg/support_icon.svg";
+  static const String sendArrow = "assets/svg/send_arrow.svg";
 }
