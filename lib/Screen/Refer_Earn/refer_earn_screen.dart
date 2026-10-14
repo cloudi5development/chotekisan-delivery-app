@@ -49,7 +49,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                 child: Column(
                   children: [
                     // App bar row
-                    
+
                     Row(
                       children: [
                         GestureDetector(
@@ -198,7 +198,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                                 fontSize: ResponsiveFontSizes.fontSize18(
                                   context,
                                 ),
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                               ),
                               const SizedBox(height: 14),
                               IntrinsicHeight(
@@ -250,7 +250,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                         text: "How it works",
                         color: myColors?.txt,
                         fontSize: ResponsiveFontSizes.fontSize18(context),
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ),
 
                       const SizedBox(height: 16),
@@ -287,7 +287,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                               text: "Share your code",
                               color: myColors?.txt,
                               fontSize: ResponsiveFontSizes.fontSize17(context),
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
                             ),
                             const SizedBox(height: 14),
                             Row(
@@ -347,22 +347,26 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                             OnestText(
                               text: "Invite more, Earn more!",
                               color: myColors?.txt,
-                              fontSize: ResponsiveFontSizes.fontSize17(context),
-                              fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveFontSizes.fontSize18(context),
+                              fontWeight: FontWeight.w600,
                             ),
                             const SizedBox(height: 2),
                             OnestText(
                               text:
                                   "There's no limit to how much you can earn.",
                               color: myColors?.primaryText,
-                              fontSize: ResponsiveFontSizes.fontSize14(context),
-                              fontWeight: FontWeight.w400,
+                              fontSize: ResponsiveFontSizes.fontSize12(context),
+                              fontWeight: FontWeight.w500,
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Image.asset(AssetImagePath.gift, height: 45),
+                      Image.asset(
+                        AssetImagePath.giftImage,
+                        height: 60,
+                        width: 90,
+                      ),
                     ],
                   ),
                 ),
@@ -394,7 +398,7 @@ class _EarningStat extends StatelessWidget {
         OnestText(
           text: label,
           color: myColors?.primaryText,
-          fontSize: ResponsiveFontSizes.fontSize15(context),
+          fontSize: ResponsiveFontSizes.fontSize14(context),
           fontWeight: FontWeight.w500,
         ),
         const SizedBox(height: 4),
@@ -402,7 +406,7 @@ class _EarningStat extends StatelessWidget {
           text: value,
           color: valueColor,
           fontSize: ResponsiveFontSizes.fontSize22(context),
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w600,
         ),
       ],
     );
@@ -468,14 +472,14 @@ class _HowItWorksStep extends StatelessWidget {
                   OnestText(
                     text: title,
                     color: myColors?.txt,
-                    fontSize: ResponsiveFontSizes.fontSize17(context),
-                    fontWeight: FontWeight.w700,
+                    fontSize: ResponsiveFontSizes.fontSize16(context),
+                    fontWeight: FontWeight.w500,
                   ),
                   const SizedBox(height: 2),
                   OnestText(
                     text: description,
                     color: myColors?.primaryText,
-                    fontSize: ResponsiveFontSizes.fontSize15(context),
+                    fontSize: ResponsiveFontSizes.fontSize14(context),
                     fontWeight: FontWeight.w400,
                     lineHeight: 1.4,
                   ),

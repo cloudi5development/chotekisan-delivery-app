@@ -33,7 +33,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   Container(
                     width: width,
                     height: topPadding + 150,
-                    padding: EdgeInsets.fromLTRB(16, topPadding + 10, 16, 0),
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -211,7 +211,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   child: OnestText(
                     text: "SETTINGS",
                     color: myColors?.txt,
-                    fontSize: ResponsiveFontSizes.fontSize16(context),
+                    fontSize: ResponsiveFontSizes.fontSize14(context),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -344,8 +344,8 @@ class _QuickActionCard extends StatelessWidget {
               OnestText(
                 text: label,
                 color: myColors?.txt,
-                fontSize: ResponsiveFontSizes.fontSize16(context),
-                fontWeight: FontWeight.w600,
+                fontSize: ResponsiveFontSizes.fontSize14(context),
+                fontWeight: FontWeight.w500,
                 lineHeight: 1.3,
                 maxLines: 2,
               ),
@@ -388,7 +388,7 @@ class _SettingsTile extends StatelessWidget {
               child: OnestText(
                 text: label,
                 color: color ?? myColors?.txt,
-                fontSize: ResponsiveFontSizes.fontSize17(context),
+                fontSize: ResponsiveFontSizes.fontSize15(context),
                 fontWeight: FontWeight.w500,
                 maxLines: 1,
                 textOverflow: TextOverflow.ellipsis,
