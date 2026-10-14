@@ -240,6 +240,12 @@ class ProfileScreen extends GetView<ProfileController> {
                       ),
                       _tileDivider(),
                       _SettingsTile(
+                        label: "Wallet",
+                        svgIcon: AssetSvgPath.vehicleIcon,
+                        onTap: () => Get.toNamed(AppRoutes.wallet),
+                      ),
+                      _tileDivider(),
+                      _SettingsTile(
                         label: "Vehicle Details",
                         svgIcon: AssetSvgPath.vehicleIcon,
                         onTap: () => Get.toNamed(AppRoutes.vehicleDetails),
