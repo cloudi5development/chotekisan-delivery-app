@@ -28,16 +28,20 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                 width: double.infinity,
                 padding: EdgeInsets.fromLTRB(16, topPadding + 8, 16, 20),
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xff066006),
-                      Color(0xff2E8B0E),
-                      Color(0xff9ABB0A),
-                    ],
-                    stops: [0, 0.55, 1],
+                  image: DecorationImage(
+                    image: AssetImage(AssetImagePath.rewardBG),
+                    fit: BoxFit.fill,
                   ),
+                  // gradient: LinearGradient(
+                  //   begin: Alignment.topCenter,
+                  //   end: Alignment.bottomCenter,
+                  //   colors: [
+                  //     Color(0xff066006),
+                  //     Color(0xff2E8B0E),
+                  //     Color(0xff9ABB0A),
+                  //   ],
+                  //   stops: [0, 0.55, 1],
+                  // ),
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(24),
                   ),
@@ -45,52 +49,44 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                 child: Column(
                   children: [
                     // App bar row
-                    SizedBox(
-                      height: 32,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          OnestText(
-                            text: "Refer & Earn",
+                    
+                    Row(
+                      children: [
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => Get.back(),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            size: 22,
                             color: Colors.white,
-                            fontSize: ResponsiveFontSizes.fontSize17(context),
-                            fontWeight: FontWeight.w600,
                           ),
-                          Positioned(
-                            left: 0,
-                            child: GestureDetector(
-                              behavior: HitTestBehavior.opaque,
-                              onTap: () => Get.back(),
-                              child: const Icon(
-                                Icons.arrow_back,
-                                size: 22,
-                                color: Colors.white,
-                              ),
-                            ),
+                        ),
+                        Spacer(),
+                        OnestText(
+                          text: "Refer & Earn",
+                          color: Colors.white,
+                          fontSize: ResponsiveFontSizes.fontSize17(context),
+                          fontWeight: FontWeight.w600,
+                        ),
+                        Spacer(),
+                        Container(
+                          height: 32,
+                          width: 32,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
                           ),
-                          Positioned(
-                            right: 0,
-                            child: Container(
-                              height: 32,
-                              width: 32,
-                              alignment: Alignment.center,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: SvgPicture.asset(
-                                AssetSvgPath.supportIcon,
-                                height: 18,
-                                width: 18,
-                              ),
-                            ),
+                          child: SvgPicture.asset(
+                            AssetSvgPath.supportIcon,
+                            height: 18,
+                            width: 18,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-
                     const SizedBox(height: 18),
-                    const Text("🎁", style: TextStyle(fontSize: 86)),
+                    Image.asset(AssetImagePath.gift, height: 100, width: 125),
                     const SizedBox(height: 18),
 
                     // Referral code + copy button
@@ -103,16 +99,14 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                               vertical: 10,
                             ),
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  const Color(0xffD7E422).withValues(
-                                    alpha: 0.55,
-                                  ),
-                                  const Color(0xffB9D112).withValues(
-                                    alpha: 0.35,
-                                  ),
-                                ],
-                              ),
+                              // gradient: LinearGradient(
+                              //   colors: [
+                              //     const Color(0xffD7E422)
+                              //         .withValues(alpha: 0.55),
+                              //     const Color(0xffB9D112)
+                              //         .withValues(alpha: 0.35),
+                              //   ],
+                              // ),
                               borderRadius: BorderRadius.circular(14),
                               border: Border.all(
                                 color: Colors.white.withValues(alpha: 0.5),
@@ -170,11 +164,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                                   fontWeight: FontWeight.w600,
                                 ),
                                 const SizedBox(height: 2),
-                                const Icon(
-                                  Icons.copy_rounded,
-                                  size: 18,
-                                  color: Colors.white,
-                                ),
+                                SvgPicture.asset(AssetSvgPath.copyIcon),
                               ],
                             ),
                           ),
@@ -267,20 +257,17 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                       const _HowItWorksStep(
                         number: "1",
                         title: "Share your referral code",
-                        description:
-                            "Share your code with your friends and fellow delivery partners.",
+                        description: "Share your code with your friends and fellow delivery partners.",
                       ),
                       const _HowItWorksStep(
                         number: "2",
                         title: "They join and complete",
-                        description:
-                            "Your friend signs up and completes their first delivery.",
+                        description: "Your friend signs up and completes their first delivery.",
                       ),
                       const _HowItWorksStep(
                         number: "3",
                         title: "You earn rewards",
-                        description:
-                            "Once their first delivery is completed, you earn the reward.",
+                        description: "Once their first delivery is completed, you earn the reward.",
                         isLast: true,
                       ),
 
@@ -299,42 +286,35 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                             OnestText(
                               text: "Share your code",
                               color: myColors?.txt,
-                              fontSize: ResponsiveFontSizes.fontSize17(
-                                context,
-                              ),
+                              fontSize: ResponsiveFontSizes.fontSize17(context),
                               fontWeight: FontWeight.w700,
                             ),
                             const SizedBox(height: 14),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 _ShareOption(
                                   label: "Whatsapp",
-                                  background: const Color(0xff25D366),
-                                  icon: Icons.chat,
-                                  iconColor: Colors.white,
+                                  background: Colors.white,
+                                  icon: AssetSvgPath.whatsappIcon,
                                   onTap: controller.shareViaWhatsapp,
                                 ),
                                 _ShareOption(
                                   label: "SMS",
-                                  background: const Color(0xff2B7FFF),
-                                  icon: Icons.sms,
-                                  iconColor: Colors.white,
+                                  background: Colors.white,
+                                  icon: AssetSvgPath.smsIcon,
                                   onTap: controller.shareViaSms,
                                 ),
                                 _ShareOption(
                                   label: "Share Link",
                                   background: Colors.white,
-                                  icon: Icons.link_rounded,
-                                  iconColor: myColors?.txt,
+                                  icon: AssetSvgPath.shareIcon,
                                   onTap: controller.shareLink,
                                 ),
                                 _ShareOption(
                                   label: "More",
                                   background: Colors.white,
-                                  icon: Icons.more_horiz_rounded,
-                                  iconColor: myColors?.txt,
+                                  icon: AssetSvgPath.moreIcon,
                                   onTap: controller.shareMore,
                                 ),
                               ],
@@ -367,9 +347,7 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                             OnestText(
                               text: "Invite more, Earn more!",
                               color: myColors?.txt,
-                              fontSize: ResponsiveFontSizes.fontSize17(
-                                context,
-                              ),
+                              fontSize: ResponsiveFontSizes.fontSize17(context),
                               fontWeight: FontWeight.w700,
                             ),
                             const SizedBox(height: 2),
@@ -377,16 +355,14 @@ class ReferEarnScreen extends GetView<ReferEarnController> {
                               text:
                                   "There's no limit to how much you can earn.",
                               color: myColors?.primaryText,
-                              fontSize: ResponsiveFontSizes.fontSize14(
-                                context,
-                              ),
+                              fontSize: ResponsiveFontSizes.fontSize14(context),
                               fontWeight: FontWeight.w400,
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(width: 10),
-                      const Text("🎁", style: TextStyle(fontSize: 38)),
+                      Image.asset(AssetImagePath.gift, height: 45),
                     ],
                   ),
                 ),
@@ -516,8 +492,7 @@ class _HowItWorksStep extends StatelessWidget {
 class _ShareOption extends StatelessWidget {
   final String label;
   final Color background;
-  final IconData icon;
-  final Color? iconColor;
+  final String icon;
   final VoidCallback onTap;
 
   const _ShareOption({
@@ -525,7 +500,6 @@ class _ShareOption extends StatelessWidget {
     required this.background,
     required this.icon,
     required this.onTap,
-    this.iconColor,
   });
 
   @override
@@ -543,7 +517,7 @@ class _ShareOption extends StatelessWidget {
               color: background,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, size: 22, color: iconColor),
+            child: SvgPicture.asset(icon),
           ),
           const SizedBox(height: 6),
           OnestText(

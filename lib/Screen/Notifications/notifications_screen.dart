@@ -1,9 +1,11 @@
 import 'package:chotekisan_delivery_app/Screen/Notifications/notifications_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class NotificationsScreen extends GetView<NotificationsController> {
@@ -20,17 +22,18 @@ class NotificationsScreen extends GetView<NotificationsController> {
           children: [
             const CustomAppHeader(title: "Notifications", showBack: true),
 
-            // Filter chips
+            // Filter chips – filters list is static, no Obx needed here;
+            // selectedFilter.value is read inside itemBuilder via a nested Obx.
             SizedBox(
               height: 60,
-              child: Obx(
-                () => ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
-                  itemCount: controller.filters.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 10),
-                  itemBuilder: (context, index) {
-                    final filter = controller.filters[index];
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
+                itemCount: controller.filters.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (context, index) {
+                  final filter = controller.filters[index];
+                  return Obx(() {
                     final isSelected =
                         controller.selectedFilter.value == filter;
                     return GestureDetector(
@@ -55,27 +58,49 @@ class NotificationsScreen extends GetView<NotificationsController> {
                               ? myColors?.green
                               : myColors?.primaryText,
                           fontSize: ResponsiveFontSizes.fontSize16(context),
-                          fontWeight: isSelected
-                              ? FontWeight.w700
-                              : FontWeight.w500,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     );
-                  },
-                ),
+                  });
+                },
               ),
             ),
 
-            // Grouped notifications
+            // Grouped notifications – directly read both Rx observables inside
+            // Obx so GetX can track reactivity properly.
             Expanded(
               child: Obx(() {
-                final grouped = controller.groupedNotifications;
+                // Access both observables so GetX registers them as dependencies.
+                final selectedFilter = controller.selectedFilter.value;
+                final allNotifications = controller.notifications;
+
+                final filtered = allNotifications.where((n) {
+                  switch (selectedFilter) {
+                    case "Orders":
+                      return n.category == NotificationCategory.orders;
+                    case "Earnings":
+                      return n.category == NotificationCategory.earnings;
+                    case "Incentives":
+                      return n.category == NotificationCategory.incentives;
+                    default:
+                      return true;
+                  }
+                });
+
+                final grouped = <String, List<AppNotification>>{};
+                for (final notification in filtered) {
+                  grouped
+                      .putIfAbsent(notification.dateGroup, () => [])
+                      .add(notification);
+                }
+
                 if (grouped.isEmpty) {
                   return Center(
                     child: OnestText(
                       text: "No notifications yet",
                       color: myColors?.primaryText,
-                      fontSize: ResponsiveFontSizes.fontSize17(context),
+                      fontSize: ResponsiveFontSizes.fontSize16(context),
                       fontWeight: FontWeight.w500,
                     ),
                   );
@@ -90,7 +115,7 @@ class NotificationsScreen extends GetView<NotificationsController> {
                           text: entry.key,
                           color: myColors?.txt,
                           fontSize: ResponsiveFontSizes.fontSize18(context),
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                         ),
 
                         const SizedBox(height: 10),
@@ -113,9 +138,7 @@ class NotificationsScreen extends GetView<NotificationsController> {
                                       color: Color(0xffF0F1F3),
                                     ),
                                   ),
-                                _NotificationTile(
-                                  notification: entry.value[i],
-                                ),
+                                _NotificationTile(notification: entry.value[i]),
                               ],
                             ],
                           ),
@@ -140,16 +163,16 @@ class _NotificationTile extends StatelessWidget {
 
   const _NotificationTile({required this.notification});
 
-  IconData get _icon {
+  String get _svgPath {
     switch (notification.category) {
       case NotificationCategory.orders:
-        return Icons.inventory_2_rounded;
+        return AssetSvgPath.orderDelivered;
       case NotificationCategory.earnings:
-        return Icons.shopping_bag_rounded;
+        return AssetSvgPath.paymentReceived;
       case NotificationCategory.incentives:
-        return Icons.military_tech_rounded;
+        return AssetSvgPath.incentiveUnlocked;
       case NotificationCategory.general:
-        return Icons.notifications_rounded;
+        return AssetSvgPath.notificationIconColor;
     }
   }
 
@@ -168,7 +191,9 @@ class _NotificationTile extends StatelessWidget {
               color: Color(0xffF4F5F7),
               shape: BoxShape.circle,
             ),
-            child: Icon(_icon, size: 21, color: const Color(0xffF59E0B)),
+            child: Center(
+              child: SvgPicture.asset(_svgPath, width: 22, height: 22),
+            ),
           ),
 
           const SizedBox(width: 12),
@@ -182,8 +207,8 @@ class _NotificationTile extends StatelessWidget {
                       child: OnestText(
                         text: notification.title,
                         color: myColors?.txt,
-                        fontSize: ResponsiveFontSizes.fontSize17(context),
-                        fontWeight: FontWeight.w700,
+                        fontSize: ResponsiveFontSizes.fontSize16(context),
+                        fontWeight: FontWeight.w500,
                         maxLines: 1,
                         textOverflow: TextOverflow.ellipsis,
                       ),
@@ -214,7 +239,7 @@ class _NotificationTile extends StatelessWidget {
                 OnestText(
                   text: notification.description,
                   color: myColors?.primaryText,
-                  fontSize: ResponsiveFontSizes.fontSize15(context),
+                  fontSize: ResponsiveFontSizes.fontSize14(context),
                   fontWeight: FontWeight.w400,
                   lineHeight: 1.4,
                 ),

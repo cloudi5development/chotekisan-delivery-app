@@ -1,9 +1,11 @@
 import 'package:chotekisan_delivery_app/Screen/Message_Centre/message_centre_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class MessageCentreScreen extends GetView<MessageCentreController> {
@@ -59,11 +61,7 @@ class MessageCentreScreen extends GetView<MessageCentreController> {
                   children: [
                     GestureDetector(
                       onTap: controller.onAttach,
-                      child: Icon(
-                        Icons.attach_file_rounded,
-                        size: 22,
-                        color: myColors?.primaryText,
-                      ),
+                      child: SvgPicture.asset(AssetSvgPath.attachmentIcon),
                     ),
 
                     const SizedBox(width: 8),
@@ -129,15 +127,12 @@ class _BotMessageBubble extends GetView<MessageCentreController> {
         Container(
           height: 38,
           width: 38,
+          padding: EdgeInsets.all(4),
           decoration: BoxDecoration(
             color: const Color(0xffD2F0D7),
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            Icons.support_agent_rounded,
-            size: 22,
-            color: myColors?.green,
-          ),
+          child: SvgPicture.asset(AssetSvgPath.appIcon),
         ),
 
         const SizedBox(width: 8),
@@ -201,7 +196,7 @@ class _MyMessageBubble extends GetView<MessageCentreController> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             OnestText(
               text: message.text,

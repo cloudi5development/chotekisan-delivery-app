@@ -1,7 +1,9 @@
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 /// Shows the Log Out confirmation popup. Resolves to `true` when Logout is
 /// tapped.
@@ -23,28 +25,29 @@ Future<bool> showLogoutDialog(BuildContext context) async {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: 76,
-              width: 76,
+              height: 60,
+              width: 60,
+              padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: red.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.logout_rounded, color: red, size: 32),
+              child: SvgPicture.asset(AssetSvgPath.logoutIcon),
             ),
 
             const SizedBox(height: 14),
             OnestText(
               text: "Log Out",
               color: red,
-              fontSize: ResponsiveFontSizes.fontSize20(context),
-              fontWeight: FontWeight.w700,
+              fontSize: ResponsiveFontSizes.fontSize22(context),
+              fontWeight: FontWeight.w600,
             ),
 
             const SizedBox(height: 4),
             OnestText(
               text: "Are you sure you want to logout?",
               color: myColors?.primaryText,
-              fontSize: ResponsiveFontSizes.fontSize15(context),
+              fontSize: ResponsiveFontSizes.fontSize14(context),
               fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
             ),

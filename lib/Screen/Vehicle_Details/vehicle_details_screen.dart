@@ -97,10 +97,7 @@ class VehicleDetailsScreen extends GetView<VehicleDetailsController> {
                               ),
                             ),
                             const SizedBox(width: 10),
-                            SvgPicture.asset(
-                              AssetSvgPath.scooter,
-                              height: 78,
-                            ),
+                            SvgPicture.asset(AssetSvgPath.scooter, height: 78),
                           ],
                         ),
                       ),
@@ -111,7 +108,7 @@ class VehicleDetailsScreen extends GetView<VehicleDetailsController> {
                         text: "Vehicle Overview",
                         color: myColors?.txt,
                         fontSize: ResponsiveFontSizes.fontSize18(context),
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ),
 
                       const SizedBox(height: 10),
@@ -122,18 +119,9 @@ class VehicleDetailsScreen extends GetView<VehicleDetailsController> {
                         ),
                         child: Column(
                           children: [
-                            _OverviewRow(
-                              label: "Brand",
-                              value: details.brand,
-                            ),
-                            _OverviewRow(
-                              label: "Model",
-                              value: details.model,
-                            ),
-                            _OverviewRow(
-                              label: "Color",
-                              value: details.color,
-                            ),
+                            _OverviewRow(label: "Brand", value: details.brand),
+                            _OverviewRow(label: "Model", value: details.model),
+                            _OverviewRow(label: "Color", value: details.color),
                             _OverviewRow(
                               label: "Year of Manufacture",
                               value: details.yearOfManufacture,
@@ -162,8 +150,7 @@ class VehicleDetailsScreen extends GetView<VehicleDetailsController> {
                       if (controller.isIncomplete) ...[
                         const SizedBox(height: 16),
                         const InfoNoteBox(
-                          text:
-                              "Update your vehicle details to get support from our chotekisan team in case of emergency.",
+                          text: "Update your vehicle details to get support from our chotekisan team in case of emergency.",
                           backgroundColor: Color(0xffE8EAED),
                           iconColor: Color(0xff4B5563),
                           textColor: Color(0xff4B5563),
@@ -186,7 +173,7 @@ class VehicleDetailsScreen extends GetView<VehicleDetailsController> {
             width: width,
             bgcolor: myColors?.green,
             textcolor: Colors.white,
-            borderRadius: 24,
+            borderRadius: 12,
             icon: const Padding(
               padding: EdgeInsets.only(left: 6),
               child: Icon(Icons.arrow_forward, size: 18, color: Colors.white),
@@ -218,9 +205,7 @@ class _OverviewRow extends StatelessWidget {
       decoration: BoxDecoration(
         border: isLast
             ? null
-            : const Border(
-                bottom: BorderSide(color: Color(0xffF0F1F3)),
-              ),
+            : const Border(bottom: BorderSide(color: Color(0xffF0F1F3))),
       ),
       child: Row(
         children: [
@@ -229,7 +214,7 @@ class _OverviewRow extends StatelessWidget {
               text: label,
               color: myColors?.primaryText,
               fontSize: ResponsiveFontSizes.fontSize16(context),
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
             ),
           ),
           const SizedBox(width: 10),
@@ -237,7 +222,7 @@ class _OverviewRow extends StatelessWidget {
             text: value.isEmpty ? "--" : value,
             color: myColors?.txt,
             fontSize: ResponsiveFontSizes.fontSize16(context),
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
             textAlign: TextAlign.right,
           ),
         ],

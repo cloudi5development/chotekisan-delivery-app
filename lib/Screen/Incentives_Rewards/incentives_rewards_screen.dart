@@ -49,7 +49,7 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                                   OnestText(
                                     text: "Total Earnings (This Month)",
                                     color: myColors?.primaryText,
-                                    fontSize: ResponsiveFontSizes.fontSize16(
+                                    fontSize: ResponsiveFontSizes.fontSize14(
                                       context,
                                     ),
                                     fontWeight: FontWeight.w500,
@@ -59,10 +59,10 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                                     text:
                                         "₹${controller.totalEarnings.value.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},')}",
                                     color: myColors?.txt,
-                                    fontSize: ResponsiveFontSizes.fontSize30(
+                                    fontSize: ResponsiveFontSizes.fontSize24(
                                       context,
                                     ),
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w600,
                                     lineHeight: 1.2,
                                   ),
                                   const SizedBox(height: 4),
@@ -79,10 +79,10 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                                             "${controller.growthPercent.value}% vs last month",
                                         color: myColors?.green,
                                         fontSize:
-                                            ResponsiveFontSizes.fontSize15(
+                                            ResponsiveFontSizes.fontSize14(
                                               context,
                                             ),
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ],
                                   ),
@@ -90,7 +90,7 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                               ),
                             ),
                             const SizedBox(width: 10),
-                            const Text("🎁", style: TextStyle(fontSize: 56)),
+                            Image.asset(AssetImagePath.rewardGift, height: 100),
                           ],
                         ),
                       ),
@@ -100,8 +100,8 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                       OnestText(
                         text: "Incentives",
                         color: myColors?.txt,
-                        fontSize: ResponsiveFontSizes.fontSize20(context),
-                        fontWeight: FontWeight.w700,
+                        fontSize: ResponsiveFontSizes.fontSize18(context),
+                        fontWeight: FontWeight.w600,
                       ),
 
                       const SizedBox(height: 10),
@@ -119,9 +119,7 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                             ) ...[
                               if (i > 0)
                                 const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 14,
-                                  ),
+                                  padding: EdgeInsets.symmetric(horizontal: 14),
                                   child: Divider(
                                     height: 1,
                                     thickness: 1,
@@ -150,22 +148,16 @@ class IncentivesRewardsScreen extends GetView<IncentivesRewardsController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             OnestText(
-                              text:
-                                  "Complete the targets to earn exciting bonuses.",
+                              text: "Complete the targets to earn exciting bonuses.",
                               color: myColors?.txt,
-                              fontSize: ResponsiveFontSizes.fontSize16(
-                                context,
-                              ),
-                              fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveFontSizes.fontSize14(context),
+                              fontWeight: FontWeight.w500,
                             ),
                             const SizedBox(height: 2),
                             OnestText(
-                              text:
-                                  "Incentives are credited within 24-48 hours after meeting the criteria.",
+                              text: "Incentives are credited within 24-48 hours after meeting the criteria.",
                               color: myColors?.primaryText,
-                              fontSize: ResponsiveFontSizes.fontSize15(
-                                context,
-                              ),
+                              fontSize: ResponsiveFontSizes.fontSize14(context),
                               fontWeight: FontWeight.w400,
                               lineHeight: 1.4,
                             ),
@@ -205,7 +197,10 @@ class _IncentiveTile extends StatelessWidget {
               color: Color(0xffD2F0D7),
               shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset(AssetSvgPath.scooter, height: 26),
+            child: SvgPicture.asset(
+              AssetSvgPath.scooterOutlinedIcon,
+              height: 26,
+            ),
           ),
 
           const SizedBox(width: 12),
@@ -216,15 +211,15 @@ class _IncentiveTile extends StatelessWidget {
                 OnestText(
                   text: incentive.title,
                   color: myColors?.txt,
-                  fontSize: ResponsiveFontSizes.fontSize17(context),
-                  fontWeight: FontWeight.w700,
+                  fontSize: ResponsiveFontSizes.fontSize14(context),
+                  fontWeight: FontWeight.w500,
                 ),
                 const SizedBox(height: 2),
                 OnestText(
                   text: incentive.description,
                   color: myColors?.primaryText,
-                  fontSize: ResponsiveFontSizes.fontSize15(context),
-                  fontWeight: FontWeight.w400,
+                  fontSize: ResponsiveFontSizes.fontSize12(context),
+                  fontWeight: FontWeight.w500,
                 ),
 
                 const SizedBox(height: 8),
@@ -232,7 +227,7 @@ class _IncentiveTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: incentive.isEarned ? 1 : incentive.progress,
-                    minHeight: 5,
+                    minHeight: 4,
                     backgroundColor: const Color(0xffE4E6E9),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       incentive.isEarned
@@ -244,8 +239,7 @@ class _IncentiveTile extends StatelessWidget {
 
                 const SizedBox(height: 6),
                 OnestText(
-                  text:
-                      "${incentive.completed}/${incentive.target} Deliveries",
+                  text: "${incentive.completed}/${incentive.target} Deliveries",
                   color: myColors?.primaryText,
                   fontSize: ResponsiveFontSizes.fontSize15(context),
                   fontWeight: FontWeight.w500,
@@ -261,8 +255,8 @@ class _IncentiveTile extends StatelessWidget {
               OnestText(
                 text: "₹${incentive.amount}",
                 color: incentive.isEarned ? myColors?.green : myColors?.txt,
-                fontSize: ResponsiveFontSizes.fontSize19(context),
-                fontWeight: FontWeight.w800,
+                fontSize: ResponsiveFontSizes.fontSize16(context),
+                fontWeight: FontWeight.w700,
               ),
               const SizedBox(height: 4),
               incentive.isEarned
@@ -277,15 +271,15 @@ class _IncentiveTile extends StatelessWidget {
                         OnestText(
                           text: "Earned",
                           color: myColors?.green,
-                          fontSize: ResponsiveFontSizes.fontSize15(context),
-                          fontWeight: FontWeight.w600,
+                          fontSize: ResponsiveFontSizes.fontSize12(context),
+                          fontWeight: FontWeight.w500,
                         ),
                       ],
                     )
                   : OnestText(
                       text: "Locked",
                       color: myColors?.primaryText,
-                      fontSize: ResponsiveFontSizes.fontSize15(context),
+                      fontSize: ResponsiveFontSizes.fontSize12(context),
                       fontWeight: FontWeight.w500,
                     ),
             ],

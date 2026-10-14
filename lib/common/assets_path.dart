@@ -21,11 +21,14 @@ class AssetImagePath {
   static const String zoneMap = "assets/images/zone_map.png";
   static const String orderMap = "assets/images/order_map.png";
   static const String productImage = "assets/images/product_image.png";
-  static const String noTransaction =
-      "assets/images/no_transaction_card.webp";
+  static const String noTransaction = "assets/images/no_transaction_card.webp";
+  static const String rewardBG = "assets/images/reward_bg.webp";
+  static const String gift = "assets/images/Gift.webp";
+  static const String rewardGift = "assets/images/rewards_gift.webp";
 }
 
 class AssetSvgPath {
+  static const String appIcon = "assets/svg/Chotekisan.svg";
   static const String tickIcon = "assets/svg/tick.svg";
   // Bottom navigation: plain icon, and the coloured one for the active tab
   static const String homeIcon = "assets/svg/home_icon.svg";
@@ -42,4 +45,37 @@ class AssetSvgPath {
   static const String cycle = "assets/svg/cycle.svg";
   static const String noImage = "assets/svg/no_image.svg";
   static const String supportIcon = "assets/svg/support_icon.svg";
+  static const String referIcon = "assets/svg/refer.svg";
+  static const String incentiveIcon = "assets/svg/incentives.svg";
+  static const String vehicleIcon = "assets/svg/vehicle_detail.svg";
+  static const String documentVerificationIcon = "assets/svg/documents.svg";
+  static const String notificationIcon = "assets/svg/notification.svg";
+  static const String helpAndSupportIcon = "assets/svg/help_support.svg";
+  static const String logoutIcon = "assets/svg/logout.svg";
+  static const String manageProfileIcon = "assets/svg/manage_profile.svg";
+  static const String mesageCentreIcon = "assets/svg/message_center.svg";
+  static const String wrongActionIcon = "assets/svg/wrong_action.svg";
+  static const String supportFAQIcon = "assets/svg/support_faq.svg";
+  static const String calenderIcon = "assets/svg/calender_icon.svg";
+  static const String cameraIcon = "assets/svg/camera_icon.svg";
+  static const String attachmentIcon = "assets/svg/attachment.svg";
+  static const String parcelIcon = "assets/svg/parcel.svg";
+  static const String copyIcon = "assets/svg/copy_icon.svg";
+  static const String whatsappIcon = "assets/svg/whatsapp.svg";
+  static const String smsIcon = "assets/svg/sms_icon.svg";
+  static const String shareIcon = "assets/svg/share_icon.svg";
+  static const String moreIcon = "assets/svg/more.svg";
+  static const String scooterOutlinedIcon = "assets/svg/scooter_outlined.svg";
+  static const String emptyImage = "assets/svg/empty_img.svg";
+  static const String uploadIcon = "assets/svg/upload.svg";
+  static const String incentiveUnlocked = "assets/svg/incentive_unlocked.svg";
+  static const String cameraIconOutlined = "assets/svg/camera_outlined.svg";
+  static const String notificationIconColor =
+      "assets/svg/notification_icon.svg";
+  static const String paymentReceived = "assets/svg/payment_received.svg";
+  static const String orderDelivered = "assets/svg/order_delivered.svg";
+  static const String message = "assets/svg/message.svg";
+  static const String faq = "assets/svg/faq.svg";
+  static const String mail = "assets/svg/mail.svg";
+  static const String call = "assets/svg/call.svg";
 }
