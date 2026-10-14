@@ -370,46 +370,52 @@ class EarningsScreen extends GetView<EarningsController> {
 
                       if (controller.transactions.isEmpty)
                         // Nothing earned in this period
-                        Container(
-                          width: width,
-                          padding: const EdgeInsets.fromLTRB(16, 30, 16, 36),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey.shade200),
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                AssetImagePath.noTransaction,
-                                width: width * 0.56,
-                              ),
-                              SizedBox(height: 12),
-                              OnestText(
-                                textAlign: TextAlign.center,
-                                text: controller.emptyTitle,
-                                color: Color(0xff374151),
-                                fontSize: ResponsiveFontSizes.fontSize22(
-                                  context,
-                                ),
-                                fontWeight: FontWeight.w600,
-                                lineHeight: 1.3,
-                              ),
-                              SizedBox(height: 6),
-                              OnestText(
-                                textAlign: TextAlign.center,
-                                text:
-                                    "Complete deliveries to see your earnings here.",
-                                color: myColors?.primaryText,
-                                fontSize: ResponsiveFontSizes.fontSize14(
-                                  context,
-                                ),
-                                fontWeight: FontWeight.w400,
-                                lineHeight: 1.35,
-                              ),
-                            ],
+                        ClipRRect(
+                          child: Image.asset(
+                            AssetImagePath.noTransaction,
+                            fit: BoxFit.fill,
                           ),
                         )
+                      // Container(
+                      //   width: width,
+                      //   padding: const EdgeInsets.fromLTRB(16, 30, 16, 36),
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white,
+                      //     border: Border.all(color: Colors.grey.shade200),
+                      //     borderRadius: BorderRadius.circular(14),
+                      //   ),
+                      //   child: Column(
+                      //     children: [
+                      //       Image.asset(
+                      //         AssetImagePath.noTransaction,
+                      //         width: width * 0.56,
+                      //       ),
+                      //       SizedBox(height: 12),
+                      //       OnestText(
+                      //         textAlign: TextAlign.center,
+                      //         text: controller.emptyTitle,
+                      //         color: Color(0xff374151),
+                      //         fontSize: ResponsiveFontSizes.fontSize22(
+                      //           context,
+                      //         ),
+                      //         fontWeight: FontWeight.w600,
+                      //         lineHeight: 1.3,
+                      //       ),
+                      //       SizedBox(height: 6),
+                      //       OnestText(
+                      //         textAlign: TextAlign.center,
+                      //         text:
+                      //             "Complete deliveries to see your earnings here.",
+                      //         color: myColors?.primaryText,
+                      //         fontSize: ResponsiveFontSizes.fontSize14(
+                      //           context,
+                      //         ),
+                      //         fontWeight: FontWeight.w400,
+                      //         lineHeight: 1.35,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // )
                       else if (controller.showsTransactions)
                         // Orders of the day, or of the filtered date range
                         Container(
