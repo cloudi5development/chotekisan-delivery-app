@@ -7,6 +7,7 @@ import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:chotekisan_delivery_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
@@ -63,14 +64,15 @@ class ProfileScreen extends GetView<ProfileController> {
                         Container(
                           height: 40,
                           width: 40,
+                          alignment: Alignment.center,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
-                            Icons.headset_mic_outlined,
-                            size: 22,
-                            color: myColors?.txt,
+                          child: SvgPicture.asset(
+                            AssetSvgPath.supportIcon,
+                            height: 20,
+                            width: 20,
                           ),
                         ),
                       ],
@@ -180,22 +182,19 @@ class ProfileScreen extends GetView<ProfileController> {
                   children: [
                     _QuickActionCard(
                       label: "Manage\nProfile",
-                      icon: Icons.person_outline_rounded,
-                      iconColor: myColors?.greenColor,
+                      svgIcon: AssetSvgPath.manageProfileIcon,
                       onTap: () => Get.toNamed(AppRoutes.manageProfile),
                     ),
                     const SizedBox(width: 12),
                     _QuickActionCard(
                       label: "Message\nCentre",
-                      icon: Icons.sms_outlined,
-                      iconColor: myColors?.txt,
+                      svgIcon: AssetSvgPath.mesageCentreIcon,
                       onTap: () => Get.toNamed(AppRoutes.messageCentre),
                     ),
                     const SizedBox(width: 12),
                     _QuickActionCard(
                       label: "Wrong\nActions",
-                      icon: Icons.speaker_notes_off_outlined,
-                      iconColor: myColors?.txt,
+                      svgIcon: AssetSvgPath.wrongActionIcon,
                       onTap: () => Get.toNamed(AppRoutes.wrongActions),
                     ),
                   ],
@@ -230,44 +229,44 @@ class ProfileScreen extends GetView<ProfileController> {
                     children: [
                       _SettingsTile(
                         label: "Refer & Earn",
-                        icon: Icons.confirmation_number_outlined,
+                        svgIcon: AssetSvgPath.referIcon,
                         onTap: () => Get.toNamed(AppRoutes.referEarn),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Incentives & Rewards",
-                        icon: Icons.workspace_premium_outlined,
+                        svgIcon: AssetSvgPath.incentiveIcon,
                         onTap: () => Get.toNamed(AppRoutes.incentivesRewards),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Vehicle Details",
-                        icon: Icons.local_shipping_outlined,
+                        svgIcon: AssetSvgPath.vehicleIcon,
                         onTap: () => Get.toNamed(AppRoutes.vehicleDetails),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Documents & Verification",
-                        icon: Icons.description_outlined,
+                        svgIcon: AssetSvgPath.documentVerificationIcon,
                         onTap: () =>
                             Get.toNamed(AppRoutes.documentsVerification),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Notification",
-                        icon: Icons.notifications_none_rounded,
+                        svgIcon: AssetSvgPath.notificationIcon,
                         onTap: () => Get.toNamed(AppRoutes.notifications),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Help & Support",
-                        icon: Icons.headset_mic_outlined,
+                        svgIcon: AssetSvgPath.helpAndSupportIcon,
                         onTap: () => Get.toNamed(AppRoutes.helpSupport),
                       ),
                       _tileDivider(),
                       _SettingsTile(
                         label: "Logout",
-                        icon: Icons.logout_rounded,
+                        svgIcon: AssetSvgPath.logoutIcon,
                         color: const Color(0xffE02424),
                         showChevron: false,
                         onTap: () async {
@@ -307,15 +306,13 @@ class ProfileScreen extends GetView<ProfileController> {
 
 class _QuickActionCard extends StatelessWidget {
   final String label;
-  final IconData icon;
-  final Color? iconColor;
+  final String svgIcon;
   final VoidCallback onTap;
 
   const _QuickActionCard({
     required this.label,
-    required this.icon,
+    required this.svgIcon,
     required this.onTap,
-    this.iconColor,
   });
 
   @override
@@ -335,7 +332,7 @@ class _QuickActionCard extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: Icon(icon, size: 24, color: iconColor),
+                child: SvgPicture.asset(svgIcon, height: 24, width: 24),
               ),
               const SizedBox(height: 10),
               OnestText(
@@ -356,14 +353,14 @@ class _QuickActionCard extends StatelessWidget {
 
 class _SettingsTile extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final String svgIcon;
   final Color? color;
   final bool showChevron;
   final VoidCallback onTap;
 
   const _SettingsTile({
     required this.label,
-    required this.icon,
+    required this.svgIcon,
     required this.onTap,
     this.color,
     this.showChevron = true,
@@ -379,7 +376,7 @@ class _SettingsTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
         child: Row(
           children: [
-            Icon(icon, size: 22, color: color ?? myColors?.txt),
+            SvgPicture.asset(svgIcon, height: 22, width: 22),
             const SizedBox(width: 14),
             Expanded(
               child: OnestText(

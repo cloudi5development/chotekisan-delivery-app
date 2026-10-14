@@ -1,9 +1,11 @@
 import 'package:chotekisan_delivery_app/Screen/Wrong_Actions/wrong_actions_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class WrongActionsScreen extends GetView<WrongActionsController> {
@@ -25,99 +27,105 @@ class WrongActionsScreen extends GetView<WrongActionsController> {
                 () => controller.feedbacks.isEmpty
                     ? const _EmptyFeedbacks()
                     : SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(16, 18, 16, 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (controller.newFeedbacks.isNotEmpty) ...[
-                        OnestText(
-                          text: "New Feedbacks",
-                          color: myColors?.txt,
-                          fontSize: ResponsiveFontSizes.fontSize18(context),
-                          fontWeight: FontWeight.w700,
-                        ),
-
-                        const SizedBox(height: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: myColors?.green ?? const Color(0xff0A7A10),
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              for (
-                                int i = 0;
-                                i < controller.newFeedbacks.length;
-                                i++
-                              ) ...[
-                                if (i > 0)
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                    ),
-                                    child: Divider(
-                                      height: 1,
-                                      thickness: 1,
-                                      color: Color(0xffF0F1F3),
-                                    ),
-                                  ),
-                                _FeedbackTile(
-                                  feedback: controller.newFeedbacks[i],
+                        padding: const EdgeInsets.fromLTRB(16, 18, 16, 24),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (controller.newFeedbacks.isNotEmpty) ...[
+                              OnestText(
+                                text: "New Feedbacks",
+                                color: myColors?.txt,
+                                fontSize: ResponsiveFontSizes.fontSize18(
+                                  context,
                                 ),
-                              ],
-                            ],
-                          ),
-                        ),
+                                fontWeight: FontWeight.w700,
+                              ),
 
-                        const SizedBox(height: 22),
-                      ],
-
-                      if (controller.pastFeedbacks.isNotEmpty) ...[
-                        OnestText(
-                          text: "Past Feedbacks",
-                          color: myColors?.txt,
-                          fontSize: ResponsiveFontSizes.fontSize18(context),
-                          fontWeight: FontWeight.w700,
-                        ),
-
-                        const SizedBox(height: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xffF1F2F4),
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Column(
-                            children: [
-                              for (
-                                int i = 0;
-                                i < controller.pastFeedbacks.length;
-                                i++
-                              ) ...[
-                                if (i > 0)
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                    ),
-                                    child: Divider(
-                                      height: 1,
-                                      thickness: 1,
-                                      color: Color(0xffE4E6E9),
-                                    ),
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(14),
+                                  border: Border.all(
+                                    color:
+                                        myColors?.green ??
+                                        const Color(0xff0A7A10),
                                   ),
-                                _FeedbackTile(
-                                  feedback: controller.pastFeedbacks[i],
                                 ),
-                              ],
+                                child: Column(
+                                  children: [
+                                    for (
+                                      int i = 0;
+                                      i < controller.newFeedbacks.length;
+                                      i++
+                                    ) ...[
+                                      if (i > 0)
+                                        const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 14,
+                                          ),
+                                          child: Divider(
+                                            height: 1,
+                                            thickness: 1,
+                                            color: Color(0xffF0F1F3),
+                                          ),
+                                        ),
+                                      _FeedbackTile(
+                                        feedback: controller.newFeedbacks[i],
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ),
+
+                              const SizedBox(height: 22),
                             ],
-                          ),
+
+                            if (controller.pastFeedbacks.isNotEmpty) ...[
+                              OnestText(
+                                text: "Past Feedbacks",
+                                color: myColors?.txt,
+                                fontSize: ResponsiveFontSizes.fontSize18(
+                                  context,
+                                ),
+                                fontWeight: FontWeight.w700,
+                              ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F2F4),
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                child: Column(
+                                  children: [
+                                    for (
+                                      int i = 0;
+                                      i < controller.pastFeedbacks.length;
+                                      i++
+                                    ) ...[
+                                      if (i > 0)
+                                        const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 14,
+                                          ),
+                                          child: Divider(
+                                            height: 1,
+                                            thickness: 1,
+                                            color: Color(0xffE4E6E9),
+                                          ),
+                                        ),
+                                      _FeedbackTile(
+                                        feedback: controller.pastFeedbacks[i],
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ],
                         ),
-                      ],
-                    ],
-                  ),
-                ),
+                      ),
               ),
             ),
           ],
@@ -149,8 +157,7 @@ class _EmptyFeedbacks extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             OnestText(
-              text:
-                  "You don't have any complaints or wrong action reports. Your customers are happy with your service.",
+              text: "You don't have any complaints or wrong action reports. Your customers are happy with your service.",
               color: myColors?.primaryText,
               fontSize: ResponsiveFontSizes.fontSize15(context),
               fontWeight: FontWeight.w400,
@@ -188,7 +195,7 @@ class _FeedbackTile extends StatelessWidget {
                 color: Color(0xffEDEFF2),
                 shape: BoxShape.circle,
               ),
-              child: const Text("📦", style: TextStyle(fontSize: 17)),
+              child: SvgPicture.asset(AssetSvgPath.parcelIcon),
             ),
 
             const SizedBox(width: 12),
@@ -282,7 +289,7 @@ void _showFeedbackDetail(BuildContext context, WrongActionFeedback feedback) {
                     color: Colors.white,
                     shape: BoxShape.circle,
                   ),
-                  child: const Text("📦", style: TextStyle(fontSize: 16)),
+                  child: SvgPicture.asset(AssetSvgPath.parcelIcon),
                 ),
 
                 const SizedBox(width: 10),

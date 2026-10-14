@@ -1,10 +1,12 @@
 import 'package:chotekisan_delivery_app/Screen/Documents_Verification/documents_verification_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/custom_button.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class DocumentsVerificationScreen
@@ -38,7 +40,7 @@ class DocumentsVerificationScreen
                           text: entry.key,
                           color: myColors?.txt,
                           fontSize: ResponsiveFontSizes.fontSize18(context),
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                         ),
 
                         const SizedBox(height: 10),
@@ -87,7 +89,7 @@ class DocumentsVerificationScreen
               width: width,
               bgcolor: myColors?.green,
               textcolor: Colors.white,
-              borderRadius: 24,
+              borderRadius: 12,
               icon: controller.isEditing.value
                   ? null
                   : const Padding(
@@ -123,15 +125,12 @@ class _DocumentTile extends GetView<DocumentsVerificationController> {
           Container(
             height: 46,
             width: 46,
+            padding: EdgeInsets.all(8),
             decoration: const BoxDecoration(
               color: Color(0xffEDEFF2),
               shape: BoxShape.circle,
             ),
-            child: const Icon(
-              Icons.image_rounded,
-              size: 22,
-              color: Color(0xffB6BCC6),
-            ),
+            child: SvgPicture.asset(AssetSvgPath.emptyImage),
           ),
 
           const SizedBox(width: 12),
@@ -142,8 +141,8 @@ class _DocumentTile extends GetView<DocumentsVerificationController> {
                 OnestText(
                   text: document.title,
                   color: myColors?.txt,
-                  fontSize: ResponsiveFontSizes.fontSize17(context),
-                  fontWeight: FontWeight.w600,
+                  fontSize: ResponsiveFontSizes.fontSize16(context),
+                  fontWeight: FontWeight.w500,
                   maxLines: 1,
                   textOverflow: TextOverflow.ellipsis,
                 ),
@@ -173,12 +172,10 @@ class _DocumentTile extends GetView<DocumentsVerificationController> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: const Color(0xffD2F0D7)),
                       ),
-                      child: Icon(
+                      child: SvgPicture.asset(
                         document.isPhoto
-                            ? Icons.photo_camera_outlined
-                            : Icons.file_upload_outlined,
-                        size: 20,
-                        color: myColors?.green,
+                            ? AssetSvgPath.cameraIconOutlined
+                            : AssetSvgPath.uploadIcon,
                       ),
                     ),
                   ),

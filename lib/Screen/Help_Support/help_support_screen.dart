@@ -1,9 +1,11 @@
 import 'package:chotekisan_delivery_app/Screen/Help_Support/help_support_controller.dart';
 import 'package:chotekisan_delivery_app/common/app_theme.dart';
+import 'package:chotekisan_delivery_app/common/assets_path.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/custom_app_header.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class HelpSupportScreen extends GetView<HelpSupportController> {
@@ -26,8 +28,8 @@ class HelpSupportScreen extends GetView<HelpSupportController> {
               child: OnestText(
                 text: "Quick Support",
                 color: myColors?.txt,
-                fontSize: ResponsiveFontSizes.fontSize20(context),
-                fontWeight: FontWeight.w700,
+                fontSize: ResponsiveFontSizes.fontSize18(context),
+                fontWeight: FontWeight.w600,
               ),
             ),
 
@@ -43,28 +45,28 @@ class HelpSupportScreen extends GetView<HelpSupportController> {
                     _SupportTile(
                       title: "Chat with Support",
                       subtitle: "Chat with our support team",
-                      icon: Icons.sms_outlined,
+                      icon: AssetSvgPath.message,
                       onTap: controller.chatWithSupport,
                     ),
                     _tileDivider(),
                     _SupportTile(
                       title: "Call Support",
                       subtitle: "Speak to our support executive",
-                      icon: Icons.call_outlined,
+                      icon: AssetSvgPath.call,
                       onTap: controller.callSupport,
                     ),
                     _tileDivider(),
                     _SupportTile(
                       title: "Email Support",
                       subtitle: "Send us an email, we will respond soon",
-                      icon: Icons.mail_outline_rounded,
+                      icon: AssetSvgPath.mail,
                       onTap: controller.emailSupport,
                     ),
                     _tileDivider(),
                     _SupportTile(
                       title: "FAQs",
                       subtitle: "Find answers to common questions",
-                      icon: Icons.help_outline_rounded,
+                      icon: AssetSvgPath.faq,
                       onTap: controller.openFaqs,
                     ),
                   ],
@@ -86,7 +88,7 @@ class HelpSupportScreen extends GetView<HelpSupportController> {
 class _SupportTile extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
+  final String icon;
   final VoidCallback onTap;
 
   const _SupportTile({
@@ -109,11 +111,12 @@ class _SupportTile extends StatelessWidget {
             Container(
               height: 46,
               width: 46,
+              padding: EdgeInsets.all(8),
               decoration: const BoxDecoration(
                 color: Color(0xffD2F0D7),
                 shape: BoxShape.circle,
               ),
-              child: Icon(icon, size: 22, color: myColors?.green),
+              child: SvgPicture.asset(icon),
             ),
 
             const SizedBox(width: 12),
@@ -124,15 +127,15 @@ class _SupportTile extends StatelessWidget {
                   OnestText(
                     text: title,
                     color: myColors?.txt,
-                    fontSize: ResponsiveFontSizes.fontSize17(context),
-                    fontWeight: FontWeight.w700,
+                    fontSize: ResponsiveFontSizes.fontSize16(context),
+                    fontWeight: FontWeight.w500,
                   ),
                   const SizedBox(height: 2),
                   OnestText(
                     text: subtitle,
                     color: myColors?.primaryText,
-                    fontSize: ResponsiveFontSizes.fontSize15(context),
-                    fontWeight: FontWeight.w400,
+                    fontSize: ResponsiveFontSizes.fontSize14(context),
+                    fontWeight: FontWeight.w500,
                     maxLines: 1,
                     textOverflow: TextOverflow.ellipsis,
                   ),

@@ -62,18 +62,15 @@ class UpdateVehicleDetailsScreen
                                   () => Container(
                                     height: 115,
                                     decoration: BoxDecoration(
-                                      color:
-                                          controller.vehicleType.value == i
+                                      color: controller.vehicleType.value == i
                                           ? const Color(0xffEEF8F0)
                                           : Colors.white,
                                       borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
-                                        color:
-                                            controller.vehicleType.value == i
+                                        color: controller.vehicleType.value == i
                                             ? myColors?.green ?? Colors.green
                                             : Colors.grey.shade200,
-                                        width:
-                                            controller.vehicleType.value == i
+                                        width: controller.vehicleType.value == i
                                             ? 1.2
                                             : 1,
                                       ),
@@ -87,8 +84,8 @@ class UpdateVehicleDetailsScreen
                                         ),
                                         const SizedBox(height: 10),
                                         OnestText(
-                                          text: controller
-                                              .vehicleList[i]["name"],
+                                          text:
+                                              controller.vehicleList[i]["name"],
                                           color:
                                               controller.vehicleType.value == i
                                               ? myColors?.txt
@@ -125,8 +122,7 @@ class UpdateVehicleDetailsScreen
                       label: "Vehicle Registration No",
                       hintText: "Enter vehicle registration number",
                       isRequired: true,
-                      textEditingController:
-                          controller.vehicleNumberController,
+                      textEditingController: controller.vehicleNumberController,
                       textCapitalization: TextCapitalization.characters,
                       inputFormatters: [
                         FilteringTextInputFormatter.allow(
@@ -229,21 +225,26 @@ class UpdateVehicleDetailsScreen
                     ),
 
                     const SizedBox(height: 24),
-
-                    CustomButton(
-                      text: "Update Vehicle Details",
-                      height: 48,
-                      width: width,
-                      bgcolor: myColors?.green,
-                      textcolor: Colors.white,
-                      borderRadius: 24,
-                      onPressed: () => controller.onUpdate(context),
-                    ),
                   ],
                 ),
               ),
             ),
           ],
+        ),
+      ),
+
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(16),
+          child: CustomButton(
+            text: "Update Vehicle Details",
+            height: 48,
+            width: width,
+            bgcolor: myColors?.green,
+            textcolor: Colors.white,
+            borderRadius: 12,
+            onPressed: () => controller.onUpdate(context),
+          ),
         ),
       ),
     );

@@ -8,6 +8,7 @@ import 'package:chotekisan_delivery_app/common/custom_textfield.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ManageProfileScreen extends GetView<ManageProfileController> {
@@ -54,6 +55,7 @@ class ManageProfileScreen extends GetView<ManageProfileController> {
                                   child: Container(
                                     height: 36,
                                     width: 36,
+                                    padding: EdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                       color: myColors?.green,
                                       shape: BoxShape.circle,
@@ -62,10 +64,8 @@ class ManageProfileScreen extends GetView<ManageProfileController> {
                                         width: 2.5,
                                       ),
                                     ),
-                                    child: const Icon(
-                                      Icons.photo_camera_outlined,
-                                      size: 17,
-                                      color: Colors.white,
+                                    child: SvgPicture.asset(
+                                      AssetSvgPath.cameraIcon,
                                     ),
                                   ),
                                 ),
@@ -126,9 +126,8 @@ class ManageProfileScreen extends GetView<ManageProfileController> {
                           textEditingController: controller.dobController,
                           readOnly: true,
                           onTap: () => controller.pickDateOfBirth(context),
-                          suffixIcon: const Icon(
-                            Icons.calendar_month_outlined,
-                            size: 20,
+                          suffixIcon: SvgPicture.asset(
+                            AssetSvgPath.calenderIcon,
                             color: Color(0xff374151),
                           ),
                         ),

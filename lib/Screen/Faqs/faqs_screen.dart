@@ -64,10 +64,10 @@ class FaqsScreen extends GetView<FaqsController> {
                                           text: controller.faqs[i].question,
                                           color: myColors?.txt,
                                           fontSize:
-                                              ResponsiveFontSizes.fontSize17(
+                                              ResponsiveFontSizes.fontSize16(
                                                 context,
                                               ),
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w500,
                                           lineHeight: 1.35,
                                         ),
                                       ),
@@ -75,9 +75,8 @@ class FaqsScreen extends GetView<FaqsController> {
                                       Icon(
                                         controller.expandedIndex.value == i
                                             ? Icons.keyboard_arrow_up_rounded
-                                            : Icons
-                                                  .keyboard_arrow_down_rounded,
-                                        size: 24,
+                                            : Icons.keyboard_arrow_down_rounded,
+                                        size: 20,
                                         color: myColors?.txt,
                                       ),
                                     ],
@@ -88,10 +87,10 @@ class FaqsScreen extends GetView<FaqsController> {
                                     OnestText(
                                       text: controller.faqs[i].answer,
                                       color: myColors?.primaryText,
-                                      fontSize: ResponsiveFontSizes.fontSize16(
+                                      fontSize: ResponsiveFontSizes.fontSize14(
                                         context,
                                       ),
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       lineHeight: 1.45,
                                     ),
                                   ],
