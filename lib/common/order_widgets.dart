@@ -5,6 +5,7 @@ import 'package:chotekisan_delivery_app/common/common_widgets.dart';
 import 'package:chotekisan_delivery_app/common/customText.dart';
 import 'package:chotekisan_delivery_app/common/responsive_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 /// Top row of an order card: icon, order id, distance, price and a divider.
 class OrderCardHeader extends StatelessWidget {
@@ -79,7 +80,11 @@ class OrderCardHeader extends StatelessWidget {
 /// PICKUP / DROP-OFF block. [showConnector] draws the dashed line down to the
 /// next block.
 class OrderAddressBlock extends StatelessWidget {
-  final IconData icon;
+  /// Material icon, used when [svgIcon] is not given.
+  final IconData? icon;
+
+  /// Svg asset path shown instead of [icon]. Drawn in its own colours.
+  final String? svgIcon;
   final String label;
   final String name;
   final String address;
@@ -87,7 +92,8 @@ class OrderAddressBlock extends StatelessWidget {
 
   const OrderAddressBlock({
     super.key,
-    required this.icon,
+    this.icon,
+    this.svgIcon,
     required this.label,
     required this.name,
     required this.address,
@@ -105,12 +111,14 @@ class OrderAddressBlock extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 1),
-                Icon(icon, size: 13, color: Color(0xff4B5563)),
+                svgIcon != null
+                    ? SvgPicture.asset(svgIcon!, height: 18, width: 18)
+                    : Icon(icon, size: 13, color: Color(0xff4B5563)),
                 if (showConnector)
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: CustomPaint(
+                       child: CustomPaint(
                         painter: DashedLinePainter(color: Color(0xff6B7280)),
                       ),
                     ),

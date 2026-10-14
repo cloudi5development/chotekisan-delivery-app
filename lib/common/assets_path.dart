@@ -78,4 +78,5 @@ class AssetSvgPath {
   static const String faq = "assets/svg/faq.svg";
   static const String mail = "assets/svg/mail.svg";
   static const String call = "assets/svg/call.svg";
+  static const String sendArrow = "assets/svg/send_arrow.svg";
 }
