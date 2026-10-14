@@ -54,8 +54,20 @@ import 'package:chotekisan_delivery_app/Screen/Vehicle_Information/vehicle_infor
 import 'package:chotekisan_delivery_app/Screen/Wrong_Actions/wrong_actions_binding.dart';
 import 'package:chotekisan_delivery_app/Screen/Wrong_Actions/wrong_actions_screen.dart';
 import 'package:chotekisan_delivery_app/Screen/Vehicle_Information/vehicle_information_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Wallet/wallet_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Wallet/wallet_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Withdraw_Money/withdraw_money_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Withdraw_Money/withdraw_money_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Withdraw_Success/withdraw_success_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Withdraw_Success/withdraw_success_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Manage_Bank_Account/manage_bank_account_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Manage_Bank_Account/manage_bank_account_screen.dart';
+import 'package:chotekisan_delivery_app/Screen/Payout_History/payout_history_binding.dart';
+import 'package:chotekisan_delivery_app/Screen/Payout_History/payout_history_screen.dart';
 import 'package:chotekisan_delivery_app/routes/app_routes.dart';
 import 'package:get/get.dart';
+
+
 
 class AppPages {
   static final List<GetPage<dynamic>> routes = <GetPage<dynamic>>[
@@ -226,6 +238,36 @@ class AppPages {
       name: AppRoutes.deliveryPersonType,
       page: () => const DeliveryPersonTypeScreen(),
       binding: DeliveryPersonTypeBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.wallet,
+      page: () => const WalletScreen(),
+      binding: WalletBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.withdrawMoney,
+      page: () => const WithdrawMoneyScreen(),
+      binding: WithdrawMoneyBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.withdrawSuccess,
+      page: () => const WithdrawSuccessScreen(),
+      binding: WithdrawSuccessBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.manageBankAccount,
+      page: () => const ManageBankAccountScreen(),
+      binding: ManageBankAccountBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage<dynamic>(
+      name: AppRoutes.payoutHistory,
+      page: () => const PayoutHistoryScreen(),
+      binding: PayoutHistoryBinding(),
       transition: Transition.fadeIn,
     ),
   ];

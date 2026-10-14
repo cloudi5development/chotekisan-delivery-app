@@ -27,4 +27,9 @@ abstract class AppRoutes {
   static const String helpSupport = '/helpSupport';
   static const String faqs = '/faqs';
   static const String incentivesRewards = '/incentivesRewards';
+  static const String wallet = '/wallet';
+  static const String withdrawMoney = '/withdrawMoney';
+  static const String withdrawSuccess = '/withdrawSuccess';
+  static const String manageBankAccount = '/manageBankAccount';
+  static const String payoutHistory = '/payoutHistory';
 }

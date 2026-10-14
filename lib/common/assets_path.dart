@@ -25,6 +25,9 @@ class AssetImagePath {
   static const String rewardBG = "assets/images/reward_bg.webp";
   static const String gift = "assets/images/Gift.webp";
   static const String rewardGift = "assets/images/rewards_gift.webp";
+  static const String wallet1 = "assets/images/wallet_1.webp";
+  static const String wallet2 = "assets/images/wallet_2.webp";
+  static const String withdrawWallet = "assets/images/withdraw_walletr.webp";
 }
 
 class AssetSvgPath {
