@@ -204,25 +204,39 @@ class ManageProfileScreen extends GetView<ManageProfileController> {
                     ),
                   ),
 
-                  if (!keyboardOpen)
-                    Positioned(
-                      left: 16,
-                      right: 16,
-                      bottom: 20,
-                      child: CustomButton(
-                        text: "Update Profile",
-                        height: 48,
-                        width: width,
-                        bgcolor: myColors?.green,
-                        textcolor: Colors.white,
-                        borderRadius: 24,
-                        onPressed: () => controller.onUpdateProfile(context),
-                      ),
-                    ),
+                  // if (!keyboardOpen)
+                  //   Positioned(
+                  //     left: 16,
+                  //     right: 16,
+                  //     bottom: 20,
+                  //     child: CustomButton(
+                  //       text: "Update Profile",
+                  //       height: 48,
+                  //       width: width,
+                  //       bgcolor: myColors?.green,
+                  //       textcolor: Colors.white,
+                  //       borderRadius: 12,
+                  //       onPressed: () => controller.onUpdateProfile(context),
+                  //     ),
+                  //   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(16),
+          child: CustomButton(
+            text: "Update Profile",
+            height: 48,
+            width: width,
+            bgcolor: myColors?.green,
+            textcolor: Colors.white,
+            borderRadius: 12,
+            onPressed: () => controller.onUpdateProfile(context),
+          ),
         ),
       ),
     );

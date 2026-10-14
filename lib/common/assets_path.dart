@@ -25,6 +25,7 @@ class AssetImagePath {
   static const String rewardBG = "assets/images/reward_bg.webp";
   static const String gift = "assets/images/Gift.webp";
   static const String rewardGift = "assets/images/rewards_gift.webp";
+  static const String giftImage = "assets/images/gifts.png";
 }
 
 class AssetSvgPath {
