@@ -51,6 +51,7 @@ class AssetSvgPath {
   static const String supportIcon = "assets/svg/support_icon.svg";
   static const String referIcon = "assets/svg/refer.svg";
   static const String incentiveIcon = "assets/svg/incentives.svg";
+  static const String walletIcon = "assets/svg/wallet.svg";
   static const String vehicleIcon = "assets/svg/vehicle_detail.svg";
   static const String documentVerificationIcon = "assets/svg/documents.svg";
   static const String notificationIcon = "assets/svg/notification.svg";
